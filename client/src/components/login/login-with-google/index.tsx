@@ -14,10 +14,10 @@ export function LoginWithGoogle(params: Object) {
 }
 
 const handleLogin = async (googleData : any) => {
-    const res = await fetch("auth/callback", {
+    const res = await fetch("http://localhost:5000/api/auth/signin", {
         method: "POST",
         body: JSON.stringify({
-            token: googleData.tokenId,
+            token: googleData,
         }),
         headers: {
             "Content-Type": "application/json",
