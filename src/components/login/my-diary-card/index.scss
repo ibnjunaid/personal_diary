@@ -1,6 +1,6 @@
 @import './../../../theme/variables.scss';
 
-.login-card-outer{
+.login-card-outer {
     font-family: 'Pacifico', cursive;
     position: absolute;
     width: 540px;
@@ -11,19 +11,18 @@
     border-radius: 10px;
 }
 
-.login-card-inner{
+.login-card-inner {
     position: absolute;
     width: 510px;
     height: 188px;
     left: 15px;
     top: 15px;
-
     border: 2px dashed #BEEEF7;
     box-sizing: border-box;
     border-radius: 24px;
 }
 
-h1, h2{
+h1, h2 {
     color: $login-page-font-color;
     text-align: center;
     font-weight: 400;
