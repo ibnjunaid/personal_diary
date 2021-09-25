@@ -1,3 +1,5 @@
+@import '../../theme/variables.scss';
+
 .container2 {
     background: #c3e2e7;
     height: 100vh;
@@ -51,11 +53,13 @@
     text-align:start;
     margin: 1rem;
     padding: 1rem;
+    font-size: 1rem;
 }
 
 .hrcss {
     margin-right: 1rem;
     margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 .rightpanel {
@@ -64,4 +68,15 @@
     border-radius: .5rem;
     margin: 2rem;
     grid-area: 1/ 1;
+    padding: 2rem;
+}
+
+.createbtn{
+    margin-left:5rem;
+    margin-right: 5rem;
+    font-size: 1.5rem ;
+    background-color: $login-page-card-color ;
+    color:white;
+    border-radius: .3rem;
+    padding: .4rem;
 }

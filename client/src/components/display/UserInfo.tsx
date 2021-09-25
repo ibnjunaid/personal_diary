@@ -3,8 +3,10 @@ import './UserInfo.scss';
 const UserInfo = () =>{
 
     return(
-        <div className = 'container2'>
-        </div>
+        <>
+        <img src='https://wallpapercave.com/wp/wp5973544.jpg' className='image' alt='work desk'></img>
+        <input className='input' placeholder='Username'/>
+        </>
     )
 }
 export default UserInfo

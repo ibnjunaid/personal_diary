@@ -1,3 +1,4 @@
+import CreateEntry from '../../components/display/CreateEntry';
 import UserInfo from '../../components/display/UserInfo';
 import './Entriespage.scss';
 
@@ -7,17 +8,12 @@ const Entriespage = () =>{
         <div className = 'container2'>
 
             <div className = 'leftpanel'>
-                <input className='date' placeholder='10/9/2021'/>
-                <button className='buttonS' ></button>
-                <button className='buttonS'></button>
-                <br/>
-                <input className='title' placeholder='Entry Name'/>
-                <hr className='hrcss'/>
-                <textarea className='bodyTxt' placeholder='Enter your entry here ...'/>
+               <CreateEntry/>
             </div>
             <div className = 'rightpanel'>
-                <div></div>
-            <hr className='hrcss'/>
+                <UserInfo/>
+                <hr className='hrcss'/>
+                <button className = 'createbtn'> Create New Entry + </button>
             </div>
         </div>
     )
