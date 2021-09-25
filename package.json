@@ -1,0 +1,26 @@
+{
+  "name": "personal_diary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:client": "npm run start --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev": "run-p dev:server  dev:client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibnjunaid/personal_diary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibnjunaid/personal_diary/issues"
+  },
+  "homepage": "https://github.com/ibnjunaid/personal_diary#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
