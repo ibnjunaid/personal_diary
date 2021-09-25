@@ -1,0 +1,21 @@
+@import '../../../theme/variables.scss';
+
+button {
+    position: absolute;
+    width: 315px;
+    height: 40px;
+    left: 419px;
+    top: 436px;
+
+    font-family: Lato;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    background: $login-page-card-color;
+    border-radius: 10px;
+    color: $login-page-bg-color
+}
