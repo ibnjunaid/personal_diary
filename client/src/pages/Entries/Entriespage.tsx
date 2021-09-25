@@ -24,8 +24,12 @@ const Entriespage = () =>{
                 <hr className='hrcss'/>
                 <button className = 'createbtn'> Create New Entry + </button>
                 <button className = 'search'><SearchOutlined /></button>
-                <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
-                <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                <div className = 'entrydiv' >
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                </div>
             </div>
         </div>
     )

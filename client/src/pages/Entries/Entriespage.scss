@@ -6,7 +6,7 @@
     width: 100vw;
     display: grid;
     grid-template-columns: 2fr 5fr ;
-    grid-template-rows: 3fr 1fr 2fr 2fr 2fr 2fr;
+    grid-template-rows: 3fr 1fr 2fr 2fr 2fr;
 }
 
 .leftpanel {
@@ -14,7 +14,7 @@
     background: #BDF6CC;
     border-radius: .5rem;
     grid-area: 1/ 2/ 4/ 7;
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
 .date {
@@ -65,10 +65,10 @@
 }
 
 .rightpanel {
-    height: 90vh;
+    height: 88vh;
     background:white;
     border-radius: .5rem;
-    margin: 2rem;
+    margin: 1.5rem;
     grid-area: 1/ 1;
     padding-top: 1.5rem;
 }
@@ -78,21 +78,30 @@
     margin-right: 1rem;
     font-size: 1.5rem ;
     background-color: $login-page-card-color ;
+    border: none;
     color:white;
     border-radius: .3rem;
-    padding: .4rem;
+    padding: .6rem;
 }
 
-.search{
+.search {
     padding: .4rem;
     border-radius: .3rem;
     font-size: 1.5rem ;
     width: 3rem;
+    background-color: rgb(169, 228, 225);
+    border: none;
+    color: $login-page-card-color;
 }
-
+.entrydiv {
+    overflow-y: scroll ;
+    height: 50vh;
+}
 .entrycbtn {
-    margin: 2rem;
+    margin: 1rem;
     text-align: left;
     margin-bottom: 0rem;
-    border:none
+    border:none;
+    font-size: 1rem;
 }
+
