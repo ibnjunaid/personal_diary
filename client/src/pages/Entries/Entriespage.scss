@@ -26,10 +26,12 @@
 
 .buttonS {
     background-color: transparent;
-    height:1rem;
+    height: 2rem;
     width: 2rem;
     margin: 1rem;
     float:right;
+    border:none;
+    font-size: 2rem;
 }
 
 .title {
@@ -49,7 +51,7 @@
     background-color: transparent;
     border:none;
     height: 65vh;
-    width: 58vw;
+    width: 55vw;
     text-align:start;
     margin: 1rem;
     padding: 1rem;
@@ -68,15 +70,29 @@
     border-radius: .5rem;
     margin: 2rem;
     grid-area: 1/ 1;
-    padding: 2rem;
+    padding-top: 1.5rem;
 }
 
-.createbtn{
-    margin-left:5rem;
-    margin-right: 5rem;
+.createbtn {
+    margin-left: 4rem;
+    margin-right: 1rem;
     font-size: 1.5rem ;
     background-color: $login-page-card-color ;
     color:white;
     border-radius: .3rem;
     padding: .4rem;
+}
+
+.search{
+    padding: .4rem;
+    border-radius: .3rem;
+    font-size: 1.5rem ;
+    width: 3rem;
+}
+
+.entrycbtn {
+    margin: 2rem;
+    text-align: left;
+    margin-bottom: 0rem;
+    border:none
 }
