@@ -1,4 +1,4 @@
-.container2{
+.container2 {
     background-color: rgb(249, 251, 253);
     height: 100vh;
     width: 100vw;
@@ -7,22 +7,22 @@
     grid-template-rows: 3fr 1fr 2fr 2fr 2fr 2fr;
 }
 
-.leftpanel{
+.leftpanel {
     height: 90vh;
     background: #BDF6CC;
     border-radius: .5rem;
     grid-area: 1/ 2/ 4/ 7;
-    margin: 2rem
+    margin: 2rem;
 }
 
-.date{
+.date {
     background-color: transparent;
     border:none;
     margin: 1rem;
     color: #6a796e;
 }
 
-.buttonS{
+.buttonS {
     background-color: transparent;
     height:1rem;
     width: 2rem;
@@ -30,7 +30,7 @@
     float:right;
 }
 
-.title{
+.title {
     background-color: transparent;
     border:none;
     font-family: Lato;
@@ -41,7 +41,7 @@
     margin-top: 0rem;
 }
 
-.bodyTxt{
+.bodyTxt {
     background-color: transparent;
     border:none;
     height: 34rem;
@@ -50,7 +50,7 @@
     margin: 1rem;
 }
 
-.hrcss{
+.hrcss {
     margin-right: 1rem;
     margin-left: 1rem;
 }
