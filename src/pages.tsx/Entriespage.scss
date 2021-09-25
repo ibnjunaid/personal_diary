@@ -1,0 +1,56 @@
+.container2 {
+    background-color: rgb(249, 251, 253);
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 2fr 5fr ;
+    grid-template-rows: 3fr 1fr 2fr 2fr 2fr 2fr;
+}
+
+.leftpanel {
+    height: 90vh;
+    background: #BDF6CC;
+    border-radius: .5rem;
+    grid-area: 1/ 2/ 4/ 7;
+    margin: 2rem;
+}
+
+.date {
+    background-color: transparent;
+    border:none;
+    margin: 1rem;
+    color: #6a796e;
+}
+
+.buttonS {
+    background-color: transparent;
+    height:1rem;
+    width: 2rem;
+    margin: 1rem;
+    float:right;
+}
+
+.title {
+    background-color: transparent;
+    border:none;
+    font-family: Lato;
+    font-style: normal;
+    font-size: 2.5rem;
+    color: black;
+    margin: 1rem;
+    margin-top: 0rem;
+}
+
+.bodyTxt {
+    background-color: transparent;
+    border:none;
+    height: 34rem;
+    width: 30rem;
+    text-align:start;
+    margin: 1rem;
+}
+
+.hrcss {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
