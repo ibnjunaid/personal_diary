@@ -1,0 +1,18 @@
+.homepage-outer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #D2F0F5;
+}
+
+.homepage-inner {
+    position: absolute;
+    width: 95vw;
+    height: 95vh;
+    left: 2.5vw;
+    top: 2.5vh;
+
+    border: 2px dashed #486989;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
