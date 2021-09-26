@@ -10,7 +10,7 @@ const EntryCard = ( prop: EntryCardProp ) => {
     return(
         <div className='card'>
            <h2>{prop.title} </h2>
-           <p>{prop.text.substring(0,70)}</p>
+           <p>{prop.text.substring(0,40)} ...</p>
         </div>
     )
 }
