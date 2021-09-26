@@ -1,5 +1,5 @@
 .container2 {
-    background-color: rgb(249, 251, 253);
+    background: #c3e2e7;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -33,24 +33,35 @@
 .title {
     background-color: transparent;
     border:none;
-    font-family: Lato;
+    font-family: 'Pacifico', cursive;
     font-style: normal;
     font-size: 2.5rem;
     color: black;
     margin: 1rem;
     margin-top: 0rem;
+    width: 50vw;
+    padding: .2rem;
 }
 
 .bodyTxt {
     background-color: transparent;
     border:none;
-    height: 34rem;
-    width: 30rem;
+    height: 65vh;
+    width: 58vw;
     text-align:start;
     margin: 1rem;
+    padding: 1rem;
 }
 
 .hrcss {
     margin-right: 1rem;
     margin-left: 1rem;
+}
+
+.rightpanel {
+    height: 90vh;
+    background:white;
+    border-radius: .5rem;
+    margin: 2rem;
+    grid-area: 1/ 1;
 }
