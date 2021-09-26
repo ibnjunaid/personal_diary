@@ -3,6 +3,8 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import authRoutes from './routes/authRoutes';
+import entryRoutes from './routes/entryRoutes';
+
 import { connect } from 'mongoose';
 
 const App = express();
@@ -13,7 +15,9 @@ App.use(cors())
 
 App.use(express.json())
 
-App.use('/api/auth', authRoutes)
+App.use('/api/auth', authRoutes);
+
+App.use('/api/entry', entryRoutes);
 
 connect('mongodb://localhost:27017/diary',(err) => {
     if(err){
