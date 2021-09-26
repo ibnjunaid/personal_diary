@@ -1,10 +1,12 @@
+@import '../../theme/variables.scss';
+
 .container2 {
     background: #c3e2e7;
     height: 100vh;
     width: 100vw;
     display: grid;
     grid-template-columns: 2fr 5fr ;
-    grid-template-rows: 3fr 1fr 2fr 2fr 2fr 2fr;
+    grid-template-rows: 3fr 1fr 2fr 2fr 2fr;
 }
 
 .leftpanel {
@@ -12,7 +14,7 @@
     background: #BDF6CC;
     border-radius: .5rem;
     grid-area: 1/ 2/ 4/ 7;
-    margin: 2rem;
+    margin: 1.5rem;
 }
 
 .date {
@@ -24,10 +26,12 @@
 
 .buttonS {
     background-color: transparent;
-    height:1rem;
+    height: 2rem;
     width: 2rem;
     margin: 1rem;
     float:right;
+    border:none;
+    font-size: 2rem;
 }
 
 .title {
@@ -47,21 +51,57 @@
     background-color: transparent;
     border:none;
     height: 65vh;
-    width: 58vw;
+    width: 55vw;
     text-align:start;
     margin: 1rem;
     padding: 1rem;
+    font-size: 1rem;
 }
 
 .hrcss {
     margin-right: 1rem;
     margin-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 .rightpanel {
-    height: 90vh;
+    height: 88vh;
     background:white;
     border-radius: .5rem;
-    margin: 2rem;
+    margin: 1.5rem;
     grid-area: 1/ 1;
+    padding-top: 1.5rem;
 }
+
+.createbtn {
+    margin-left: 4rem;
+    margin-right: 1rem;
+    font-size: 1.5rem ;
+    background-color: $login-page-card-color ;
+    border: none;
+    color:white;
+    border-radius: .3rem;
+    padding: .6rem;
+}
+
+.search {
+    padding: .4rem;
+    border-radius: .3rem;
+    font-size: 1.5rem ;
+    width: 3rem;
+    background-color: rgb(169, 228, 225);
+    border: none;
+    color: $login-page-card-color;
+}
+.entrydiv {
+    overflow-y: scroll ;
+    height: 50vh;
+}
+.entrycbtn {
+    margin: 1rem;
+    text-align: left;
+    margin-bottom: 0rem;
+    border:none;
+    font-size: 1rem;
+}
+

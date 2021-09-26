@@ -1,5 +1,15 @@
+import {SearchOutlined} from '@ant-design/icons'
+
+import CreateEntry from '../../components/display/CreateEntry';
+import EntryCard from '../../components/display/EntryCard';
 import UserInfo from '../../components/display/UserInfo';
 import './Entriespage.scss';
+
+const data ={
+    title: 'Title',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nobis quibusdam necessitatibus omnis totam voluptatum explicabo labore, quia ea similique aliquid provident dolorum fugit inventore dolor. Cum nostrum facilis iste.',
+    date: new Date()
+}
 
 const Entriespage = () =>{
 
@@ -7,17 +17,19 @@ const Entriespage = () =>{
         <div className = 'container2'>
 
             <div className = 'leftpanel'>
-                <input className='date' placeholder='10/9/2021'/>
-                <button className='buttonS' ></button>
-                <button className='buttonS'></button>
-                <br/>
-                <input className='title' placeholder='Entry Name'/>
-                <hr className='hrcss'/>
-                <textarea className='bodyTxt' placeholder='Enter your entry here ...'/>
+               <CreateEntry/>
             </div>
             <div className = 'rightpanel'>
-                <div></div>
-            <hr className='hrcss'/>
+                <UserInfo/>
+                <hr className='hrcss'/>
+                <button className = 'createbtn'> Create New Entry + </button>
+                <button className = 'search'><SearchOutlined /></button>
+                <div className = 'entrydiv' >
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                </div>
             </div>
         </div>
     )
