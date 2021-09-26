@@ -1,13 +1,8 @@
-import { Request, Response ,Router } from 'express';
+import { Router } from 'express';
+import { signinController } from '../controllers/authControllers';
 
 const router = Router();
 
-router.post('/callback',(req: Request, res: Response) => {
-    console.log(req.body);
-    res.json({
-        status: true,
-        message: 'Login Success'
-    });
-})
+router.post('/signin', signinController)
 
 export default router;
