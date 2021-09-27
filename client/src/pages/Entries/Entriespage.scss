@@ -17,10 +17,27 @@
     margin: 1.5rem;
 }
 
+.color1 {
+    background: #e6c2b8;  
+}
+
+.color2 {
+    background: #88b9cc;  
+}
+
+.color3 {
+    background: #c4afca;  
+}
+
+.color4 {
+    background: #9ed38e;  
+}
+
 .date {
     background-color: transparent;
     border:none;
     margin: 1rem;
+    margin-bottom: 0rem;
     color: #6a796e;
 }
 
@@ -32,6 +49,19 @@
     float:right;
     border:none;
     font-size: 2rem;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+}
+.buttonD {
+    background-color: transparent;
+    border-radius:.3rem;
+    height: 2rem;
+    margin: 1.5rem;
+    float:right;
+    border:none;
+    font-size: 1rem;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
 }
 
 .title {
@@ -44,14 +74,14 @@
     margin: 1rem;
     margin-top: 0rem;
     width: 50vw;
-    padding: .2rem;
+    padding: .4rem;
 }
 
 .bodyTxt {
     background-color: transparent;
     border:none;
-    height: 65vh;
-    width: 55vw;
+    height: 58vh;
+    width: 62vw;
     text-align:start;
     margin: 1rem;
     padding: 1rem;
@@ -61,7 +91,6 @@
 .hrcss {
     margin-right: 1rem;
     margin-left: 1rem;
-    margin-bottom: 1rem;
 }
 
 .rightpanel {
@@ -76,6 +105,7 @@
 .createbtn {
     margin-left: 4rem;
     margin-right: 1rem;
+    margin-bottom: 1rem ;
     font-size: 1.5rem ;
     background-color: $login-page-card-color ;
     border: none;
@@ -89,19 +119,22 @@
     border-radius: .3rem;
     font-size: 1.5rem ;
     width: 3rem;
-    background-color: rgb(169, 228, 225);
+    background-color: rgb(169, 221, 218);
     border: none;
     color: $login-page-card-color;
 }
 .entrydiv {
     overflow-y: scroll ;
     height: 50vh;
+    background-color: rgb(226, 236, 236);
+    border-radius: 1rem;
 }
 .entrycbtn {
-    margin: 1rem;
+    margin: 1.5rem;
     text-align: left;
     margin-bottom: 0rem;
     border:none;
     font-size: 1rem;
+    border-radius: .5rem;
 }
 
