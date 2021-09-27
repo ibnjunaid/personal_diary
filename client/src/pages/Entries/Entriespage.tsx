@@ -1,38 +1,40 @@
-import {SearchOutlined} from '@ant-design/icons'
+import { SearchOutlined } from '@ant-design/icons'
+import { useState } from 'react';
+//import { Link } from 'react-router-dom';
+
 
 import CreateEntry from '../../components/display/CreateEntry';
 import EntryCard from '../../components/display/EntryCard';
 import UserInfo from '../../components/display/UserInfo';
 import './Entriespage.scss';
 
-const data ={
-    title: 'Title',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nobis quibusdam necessitatibus omnis totam voluptatum explicabo labore, quia ea similique aliquid provident dolorum fugit inventore dolor. Cum nostrum facilis iste.',
-    date: new Date()
-}
 
-const Entriespage = () =>{
+const Entriespage  =  ()  => {
+    const [title, setTitle]  =  useState<string>('Title')
+    const [text, setText]  =  useState<string>('lorum ipsum dolor sit amet constructor a')
+    const [bcolor, setBColor]  =  useState<string>('color1')
+    console.log(bcolor)
 
-    return(
+    return (
         <div className = 'container2'>
 
-            <div className = 'leftpanel'>
-               <CreateEntry/>
+            <div className = {`leftpanel ${bcolor} `}>
+                <CreateEntry setTitle = {setTitle} setText = {setText} title = {title} text = {text} setBColor={setBColor} />
             </div>
             <div className = 'rightpanel'>
-                <UserInfo/>
-                <hr className='hrcss'/>
+                <UserInfo />
+                <hr className = 'hrcss' />
                 <button className = 'createbtn'> Create New Entry + </button>
                 <button className = 'search'><SearchOutlined /></button>
                 <div className = 'entrydiv' >
-                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
-                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
-                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
-                    <button className = 'entrycbtn'><EntryCard title={data.title} text={data.text} date={data.date}/></button>
+                    <button className = 'entrycbtn'><EntryCard title = {title} text = {text} /></button>
+                    <button className = 'entrycbtn'><EntryCard title = {title} text = {text} /></button>
+                    <button className = 'entrycbtn'><EntryCard title = {title} text = {text} /></button>
+                    <button className = 'entrycbtn'><EntryCard title = {title} text = {text} /></button>
                 </div>
             </div>
         </div>
     )
 }
-    
+
 export default Entriespage
