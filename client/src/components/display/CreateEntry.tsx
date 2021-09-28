@@ -11,10 +11,11 @@ interface CreateEntryProp {
     setText: (a: string) => void,
     text: string,
     title: string,
+    bcolor: string,
     setBColor: (a: string) => void
 }
 
-const CreateEntry = ({ setTitle, setText, text, title, setBColor }: CreateEntryProp) => {
+const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: CreateEntryProp) => {
 
     const date = new Date().toLocaleString() + ""
 
@@ -31,7 +32,8 @@ const CreateEntry = ({ setTitle, setText, text, title, setBColor }: CreateEntryP
         const FullEntry = {
             text,
             title,
-            date
+            date,
+            bcolor
         }
         fetch(`http://localhost:5000/`, {
             method: 'POST',
