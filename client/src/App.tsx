@@ -1,4 +1,9 @@
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 import { EOF } from 'dns';
+
 import './App.scss';
 import Entriespage from './pages/Entries/Entriespage';
 import { Home } from './pages/Home/Home';
@@ -6,7 +11,11 @@ import { Home } from './pages/Home/Home';
 function App() {
   return (
     //<Home/>
-    <Entriespage/>
+    <Router>
+        <Route path='/entry'>
+            <Entriespage />
+        </Route>
+    </Router>
   );
 }
 
