@@ -10,7 +10,8 @@
     "install:client": "npm install --prefix client",
     "install:server": "npm install --prefix server",
     "dev": "run-p dev:server  dev:client",
-    "install:all": "npm install npm-run-all && run-p install:server  install:client"
+    "install:all": "npm install npm-run-all && run-p install:server  install:client",
+    "dbscript": "ts-node server/src/dbscript/populateEntries.ts"
   },
   "repository": {
     "type": "git",
