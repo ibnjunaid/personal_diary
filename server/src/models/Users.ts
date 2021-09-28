@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
+import { keySchema, userSchema } from '../../../commons/interfaces/userSchema';
 
-const keySchema = new Schema({
+const keySchema = new Schema<keySchema>({
     value: {
         type: String,
         required: true
@@ -15,7 +16,7 @@ const keySchema = new Schema({
     }
 }, { timestamps: true });
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<userSchema>({
     googleId: {
         type: String,
         required: true,
@@ -41,6 +42,6 @@ const UserSchema = new Schema({
     },
 }, { timestamps: true , autoIndex: true});
 
-const UserModel = model('user', UserSchema);
+const UserModel = model<userSchema>('user', UserSchema);
 
 export default UserModel;

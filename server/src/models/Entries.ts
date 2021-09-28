@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
+import { EntrySchema, StyleSchema } from '../../../commons/interfaces/entrySchema';
 
-const EntryStyle = new Schema({
+const EntryStyle = new Schema<StyleSchema>({
     head: {
         color: {
             type: String,
@@ -15,7 +16,7 @@ const EntryStyle = new Schema({
     }
 });
 
-const EntrySchema = new Schema({
+const EntrySchema = new Schema<EntrySchema>({
     head: {
         type: String,
         required: true
@@ -31,6 +32,4 @@ const EntrySchema = new Schema({
     style: EntryStyle
 });
 
-const EntryModel = model('entry', EntrySchema)
-
-export default EntryModel;
+export const EntryModel = model('entry', EntrySchema)
