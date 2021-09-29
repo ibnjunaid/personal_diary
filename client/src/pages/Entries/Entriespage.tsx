@@ -13,7 +13,7 @@ const Entriespage = () => {
     const [title, setTitle] = useState<string>('Title')
     const [text, setText] = useState<string>('lorum ipsum dolor sit amet constructor a')
     const [bcolor, setBColor] = useState<string>('color1')
-    const [data, setTData] = useState<any>()
+    const [data, setTData] = useState<any>([])
 
     
     useEffect(() => {
@@ -26,7 +26,7 @@ const Entriespage = () => {
                         'Content-Type':"application/json"
                     }
                 });
-                setTData(await response.json())
+               let data = await response.json()
                 console.log(data);
             } catch (error) {
                 throw error;
@@ -46,13 +46,13 @@ const Entriespage = () => {
                 <button className='createbtn'> Create New Entry + </button>
                 <button className='search'><SearchOutlined /></button>
                 <div className='entrydiv' >
-                    {
+                    {/* {
                         data.map((data : any) => {
                             return (
                                 <button className='entrycbtn'><EntryCard title={title} text={text} /></button>
                             )
                         })
-                    }
+                    } */}
                     <button onClick={(e)=>{}} className='entrycbtn'><EntryCard title={title} text={text} /></button>
                 </div>
             </div>
