@@ -1,5 +1,5 @@
 import { SearchOutlined } from '@ant-design/icons'
-import { useEffect, useState } from 'react';
+import { MouseEventHandler, useEffect, useState } from 'react';
 //import { Link } from 'react-router-dom';
 import {EntrySchema} from '../../../../commons/interfaces/entrySchema';
 
@@ -18,6 +18,7 @@ const Entriespage = () => {
     const [text, setText] = useState<string>('lorum ipsum dolor sit amet constructor a')
     const [bcolor, setBColor] = useState<string>('color1')
     const [data, setTData] = useState<Array<EntrySchemaResponse>>([])
+    const [disabled, setDisable] = useState<boolean>(false)
 
     
     useEffect(() => {
@@ -38,26 +39,31 @@ const Entriespage = () => {
         })()
     }, [])
 
+    const showEntry = (e:  React.MouseEvent<HTMLButtonElement>) =>{
+         setTitle('yes!')
+         setText('now extract that value')
+        console.log('testtt')
+    }
+
     return (
         <div className='container2'>
 
             <div className={`leftpanel ${bcolor} `}>
-                <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor} setBColor={setBColor} />
+                <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor} setBColor={setBColor} disabled={disabled} setDisable={setDisable}/>
             </div>
             <div className='rightpanel'>
                 <UserInfo />
                 <hr className='hrcss' />
-                <button className='createbtn'> Create New Entry + </button>
+                <button className='createbtn' onClick={()=>setDisable(!disabled)}> Create New Entry + </button>
                 <button className='search'><SearchOutlined /></button>
                 <div className='entrydiv' >
                     {
                         data.map((data : any) => {
                             return (
-                                <button className='entrycbtn' key={data._id}><EntryCard title={title} text={text} /></button>
+                                <button className='entrycbtn' key={data._id} onClick={showEntry}><EntryCard title={data.head} text={data.body} /></button>
                             )
                         })
                     }
-                    <button onClick={(e)=>{}} className='entrycbtn'><EntryCard title={title} text={text} /></button>
                 </div>
             </div>
         </div>

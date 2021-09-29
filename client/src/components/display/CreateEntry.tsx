@@ -12,10 +12,12 @@ interface CreateEntryProp {
     text: string,
     title: string,
     bcolor: string,
-    setBColor: (a: string) => void
+    setBColor: (a: string) => void,
+    setDisable: (a: boolean) => void,
+    disabled: boolean
 }
 
-const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: CreateEntryProp) => {
+const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable }: CreateEntryProp) => {
 
     const date = new Date().toLocaleString() + ""
 
@@ -56,11 +58,11 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: Crea
             <Dropdown className='buttonD' options={options} onChange={(e) => { setBColor(e.value)}} value={defaultOption} placeholder="Select an option" />
             <button onClick={submitToDataBase} type='submit' className='buttonS'><SaveOutlined /></button>
             <button className='buttonS' ><DeleteOutlined /></button>
-            <button className='buttonS' ><EditOutlined /></button>
+            <button className='buttonS' onClick={()=>setDisable(!disabled)}><EditOutlined /></button>
             <br />
-            <input value={title} className='title' placeholder='Entry Name' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} />
+            <input value={title} className='title' placeholder='Entry Name' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} disabled ={disabled}/>
             <hr className='hrcss' />
-            <textarea value={text} className='bodyTxt' placeholder='Enter your entry here ...' onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => { setText(e.target.value) }} />
+            <textarea value={text} className='bodyTxt' placeholder='Enter your entry here ...' onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => { setText(e.target.value) }} disabled ={disabled}/>
         </>
     )
 }
