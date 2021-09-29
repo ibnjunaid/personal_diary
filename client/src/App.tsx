@@ -11,17 +11,17 @@ import { Home } from './pages/Home/Home';
 function App() {
   return (
     //<Home/>
-    <Router>
-        <Route path='/entry'>
+    // <Router>
+    //     <Route path='/entry'>
             <Entriespage />
-        </Route>
-        <Route path='/home'>
-            <Home />
-        </Route>
-        <Route path='/'>
-            <Redirect to= '/home'/>
-        </Route>
-    </Router>
+    //     </Route>
+    //     <Route path='/home'>
+    //         <Home />
+    //     </Route>
+    //     <Route path='/'>
+    //         <Redirect to= '/home'/>
+    //     </Route>
+    // </Router>
   );
 }
 

@@ -12,10 +12,12 @@ interface CreateEntryProp {
     text: string,
     title: string,
     bcolor: string,
-    setBColor: (a: string) => void
+    setBColor: (a: string) => void,
+    setDisable: (a: boolean) => void,
+    disabled: boolean
 }
 
-const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: CreateEntryProp) => {
+const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable }: CreateEntryProp) => {
 
     const date = new Date().toLocaleString() + ""
 
@@ -30,15 +32,22 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: Crea
     const submitToDataBase = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         const FullEntry = {
-            text,
-            title,
-            date,
-            bcolor
+            "head": title,
+            "body": text,
+            "key": "615410b77517dc2d8b8c8435",
+            "style": {
+                "head": "magenta",
+                "body": bcolor
+            }
         }
-        fetch(`http://localhost:5000/`, {
+
+        fetch(`http://localhost:5000/api/entry/create-entry`, {
             method: 'POST',
             mode: 'cors',
-            body: JSON.stringify(FullEntry)
+            body: JSON.stringify(FullEntry),
+            headers:{
+                'Content-Type':"application/json"
+            }
         })
     }
 
@@ -49,11 +58,11 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: Crea
             <Dropdown className='buttonD' options={options} onChange={(e) => { setBColor(e.value)}} value={defaultOption} placeholder="Select an option" />
             <button onClick={submitToDataBase} type='submit' className='buttonS'><SaveOutlined /></button>
             <button className='buttonS' ><DeleteOutlined /></button>
-            <button className='buttonS' ><EditOutlined /></button>
+            <button className='buttonS' onClick={()=>setDisable(!disabled)}><EditOutlined /></button>
             <br />
-            <input value={title} className='title' placeholder='Entry Name' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} />
+            <input value={title} className='title' placeholder='Entry Name' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} disabled ={disabled}/>
             <hr className='hrcss' />
-            <textarea value={text} className='bodyTxt' placeholder='Enter your entry here ...' onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => { setText(e.target.value) }} />
+            <textarea value={text} className='bodyTxt' placeholder='Enter your entry here ...' onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => { setText(e.target.value) }} disabled ={disabled}/>
         </>
     )
 }
