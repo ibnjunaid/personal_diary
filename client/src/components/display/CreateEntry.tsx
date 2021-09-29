@@ -30,15 +30,22 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor }: Crea
     const submitToDataBase = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         const FullEntry = {
-            text,
-            title,
-            date,
-            bcolor
+            "head": title,
+            "body": text,
+            "key": "615410b77517dc2d8b8c8435",
+            "style": {
+                "head": "magenta",
+                "body": bcolor
+            }
         }
-        fetch(`http://localhost:5000/`, {
+
+        fetch(`http://localhost:5000/api/entry/create-entry`, {
             method: 'POST',
             mode: 'cors',
-            body: JSON.stringify(FullEntry)
+            body: JSON.stringify(FullEntry),
+            headers:{
+                'Content-Type':"application/json"
+            }
         })
     }
 

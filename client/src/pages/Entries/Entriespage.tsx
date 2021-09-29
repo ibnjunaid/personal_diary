@@ -13,16 +13,20 @@ const Entriespage = () => {
     const [title, setTitle] = useState<string>('Title')
     const [text, setText] = useState<string>('lorum ipsum dolor sit amet constructor a')
     const [bcolor, setBColor] = useState<string>('color1')
-    let data
+    const [data, setTData] = useState<any>()
 
+    
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`http://localhost:5000/`, {
+                const response = await fetch(`http://localhost:5000/api/entry/get-entries`, {
                     method: 'GET',
                     mode: 'cors',
+                    headers:{
+                        'Content-Type':"application/json"
+                    }
                 });
-                 data = await response.json();
+                setTData(await response.json())
                 console.log(data);
             } catch (error) {
                 throw error;
@@ -42,13 +46,13 @@ const Entriespage = () => {
                 <button className='createbtn'> Create New Entry + </button>
                 <button className='search'><SearchOutlined /></button>
                 <div className='entrydiv' >
-                    {/* {
+                    {
                         data.map((data : any) => {
                             return (
                                 <button className='entrycbtn'><EntryCard title={title} text={text} /></button>
                             )
                         })
-                    } */}
+                    }
                     <button onClick={(e)=>{}} className='entrycbtn'><EntryCard title={title} text={text} /></button>
                 </div>
             </div>
