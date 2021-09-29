@@ -43,6 +43,7 @@ const Entriespage = () => {
         console.log(data);
         setTitle(data.head)
         setText(data.body)
+        setDisable(true)
         console.log(text,title)
     }
 
