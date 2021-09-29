@@ -2,8 +2,6 @@ import { Request, Response ,Router } from 'express';
 import { EntryModel } from '../models/Entries';
 
 export const createEntryController = async ( req: Request, res: Response ) => {
-    console.log(req.body)
-
     try {
         const newEntry  = new EntryModel( {...req.body} );
         const savedEntry = await newEntry.save();
