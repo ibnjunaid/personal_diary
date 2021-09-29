@@ -1,5 +1,6 @@
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
 } from 'react-router-dom';
 
@@ -13,6 +14,12 @@ function App() {
     <Router>
         <Route path='/entry'>
             <Entriespage />
+        </Route>
+        <Route path='/home'>
+            <Home />
+        </Route>
+        <Route path='/'>
+            <Redirect to= '/home'/>
         </Route>
     </Router>
   );
