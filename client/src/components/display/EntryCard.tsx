@@ -4,11 +4,10 @@ import './EntryCard.scss'
 interface EntryCardProp {
     title: string,
     text: string,
+    onClick : (e: any) => void
 }
 
 const EntryCard = (prop: EntryCardProp) => {
-
-    
     return (
         <div className='card'>
             <h2>{prop.title} </h2>

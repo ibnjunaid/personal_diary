@@ -5,7 +5,7 @@ connect('mongodb://localhost:27017/diary')
 
 const colors = ["#e6c2b8", "#88b9cc", "#c4afca", "#9ed38e"];
 
-async function populateEntries( count ) {
+async function populateEntries( count: Number ) {
     console.info('Initiating db script on ', new Date());
     for( let i=0; i< count; i++) {
         const obj = {

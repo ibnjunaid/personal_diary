@@ -1,5 +1,5 @@
 import { SearchOutlined } from '@ant-design/icons'
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 //import { Link } from 'react-router-dom';
 import {EntrySchema} from '../../../../commons/interfaces/entrySchema';
 
@@ -9,8 +9,8 @@ import UserInfo from '../../components/display/UserInfo';
 import './Entriespage.scss';
 
 interface EntrySchemaResponse extends EntrySchema{
-   _id : string,
-   _v : string
+    _id : string,
+    _v : string
 }
 
 const Entriespage = () => {
@@ -20,7 +20,7 @@ const Entriespage = () => {
     const [data, setTData] = useState<Array<EntrySchemaResponse>>([])
     const [disabled, setDisable] = useState<boolean>(false)
 
-    
+
     useEffect(() => {
         (async () => {
             try {
@@ -31,7 +31,7 @@ const Entriespage = () => {
                         'Content-Type':"application/json"
                     }
                 });
-               let {data} = await response.json()
+                let {data} = await response.json()
                 setTData(data)
             } catch (error) {
                 throw error;
@@ -39,9 +39,11 @@ const Entriespage = () => {
         })()
     }, [])
 
-    const showEntry = (e:any) =>{
-         setTitle('yes!')
-         setText('now extract that value')
+    const showEntry = (data: any) =>{
+        console.log(data);
+        setTitle(data.head)
+        setText(data.body)
+        console.log(text,title)
     }
 
     const createNewHandle = () => {
@@ -55,7 +57,7 @@ const Entriespage = () => {
 
             <div className={`leftpanel ${bcolor} `}>
                 <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
-                             setBColor={setBColor} disabled={disabled} setDisable={setDisable}/>
+                                setBColor={setBColor} disabled={disabled} setDisable={setDisable}/>
             </div>
             <div className='rightpanel'>
                 <UserInfo />
@@ -66,8 +68,8 @@ const Entriespage = () => {
                     {
                         data.map((data : any) => {
                             return (
-                                <button className='entrycbtn' key={data._id} onClick={showEntry} >
-                                    <EntryCard title={data.head} text={data.body} />
+                                <button className='entrycbtn' key={data._id} onClick={() => { showEntry(data) }} data-item="123">
+                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry}/>
                                 </button>
                             )
                         })
