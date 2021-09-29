@@ -17,6 +17,24 @@ export const createEntryController = async ( req: Request, res: Response ) => {
     }
 }
 
+//FIXME: Restrict this api to only get the entries of loggedin user
+//TODO: Implement a pagination to prevent transfer of huge data
+export const getEntryContoller = async ( req:Request, res: Response) => {
+    try {
+        const Entries = await EntryModel.find({}).lean();
+        res.json({
+            message: 'Sucessfully fetched entries for user',
+            data : Entries ?? []
+        })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'Error occured while fetching entries' +
+                    'We are looking into it. Please be patient'
+        })
+    }
+}
+
 //FIXME: Restrict this api to update documents only belonging to that user
 export const updateEntryController = async ( req: Request, res: Response ) => {
     try {
