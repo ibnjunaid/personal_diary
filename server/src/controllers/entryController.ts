@@ -7,7 +7,7 @@ export const createEntryController = async ( req: Request, res: Response ) => {
         const savedEntry = await newEntry.save();
         console.info(` New entry saved with id ${savedEntry._id} `);
         res.json({
-            message: `Entry with title ${savedEntry.title} saved successfully`
+            message: `Entry with title ${savedEntry.head} saved successfully`
         })
     } catch (error) {
         console.error(error);
@@ -20,7 +20,7 @@ export const createEntryController = async ( req: Request, res: Response ) => {
 //FIXME: Restrict this api to update documents only belonging to that user
 export const updateEntryController = async ( req: Request, res: Response ) => {
     try {
-        let Entry = EntryModel.findById(req.body.id);
+        let Entry = await EntryModel.findById(req.body.id);
         if(!Entry) {
             res.status(404).json({
                 message: 'Entry not found. ' +
@@ -32,10 +32,10 @@ export const updateEntryController = async ( req: Request, res: Response ) => {
                     ...Entry,
                     ...req.body.updatedDoc
             }
-            const savedEntry = Entry.save();
+            const savedEntry = await Entry.save();
             console.info(`Entry updated with id ${savedEntry._id} `);
             res.json({
-                message: `Entry updated with title ${savedEntry.title}`
+                message: `Entry updated with title ${savedEntry.head}`
             })
         }
     } catch (error) {
@@ -49,17 +49,17 @@ export const updateEntryController = async ( req: Request, res: Response ) => {
 //FIXME: Restrict this api to delete documents only belonging to that user
 export const deleteEntryController = async ( req: Request, res: Response ) => {
     try {
-        const deletedDoc = EntryModel.findByIdAndDelete(req.body.id);
+        const deletedDoc = await EntryModel.findByIdAndDelete(req.body.id);
+        console.log(deletedDoc);
         if(!deletedDoc) {
             res.status(404).json({
                 message: 'Entry not found. ' +
-                        'Cannot Update a non existing entry.'+
-                        'Please create a new entry.'
+                        'Cannot delete a non existing entry.'
             })
         } else {
             console.info(`Entry deleted with id ${deletedDoc._id} `);
             res.json({
-                message: `Entry deleted with title ${deletedDoc.title}`
+                message: `Entry deleted with title ${deletedDoc.head}`
             })
         }
     } catch (error) {
