@@ -8,7 +8,8 @@ export const createEntryController = async ( req: Request, res: Response ) => {
         const savedEntry = await newEntry.save();
         console.info(` New entry saved with id ${savedEntry._id} `);
         res.json({
-            message: `Entry with title " ${savedEntry.head} " saved successfully`
+            message: `Entry with title " ${savedEntry.head} " saved successfully`,
+            entry: savedEntry
         })
     } catch (error) {
         console.error(error);
@@ -72,7 +73,8 @@ export const deleteEntryController = async ( req: Request, res: Response ) => {
         } else {
             console.info(`Entry deleted with id ${deletedDoc._id} `);
             res.json({
-                message: `Entry deleted with title ${deletedDoc.head}`
+                message: `Entry deleted with title ${deletedDoc.head}`,
+                entry: deletedDoc
             })
         }
     } catch (error) {
