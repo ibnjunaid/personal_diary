@@ -48,7 +48,7 @@ const Entriespage = () => {
         setID(data._id)
         setDisable(true)
         console.log(text,title)
-        
+        setBColor(data?.style?.body?.color)
     }
 
     const createNewHandle = () => {
@@ -60,7 +60,7 @@ const Entriespage = () => {
     return (
         <div className='container2'>
 
-            <div className={`leftpanel ${bcolor} `}>
+            <div className='leftpanel' style={{background : bcolor}}>
                 <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
                                 setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} setData={setData} />
             </div>
@@ -73,8 +73,8 @@ const Entriespage = () => {
                     {
                         data.map((data : any, index) => {
                             return (
-                                <button className='entrycbtn' key={data._id} onClick={() => { showEntry(data) }} data-item="123">
-                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry}/>
+                                <button className='entrycbtn' key={data._id} onClick={() => { showEntry(data) }} data-item="123" >
+                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry} style={data?.style?.body?.color}/>
                                 </button>
                             )
                         })
