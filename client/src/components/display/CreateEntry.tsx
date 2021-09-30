@@ -77,6 +77,8 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
             response.json()
                 .then(({entry}: any) => {
                     setData(data.filter((entry) => entry._id !== id ))
+                    setTitle('')
+                    setText('')
             })
         })
     }
