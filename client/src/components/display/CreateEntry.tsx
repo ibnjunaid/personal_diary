@@ -27,10 +27,10 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
     const date = new Date().toLocaleString() + ""
 
     const options = [
-        { value: 'color1', label: 'Pink' },
-        { value: 'color2', label: 'Blue' },
-        { value: 'color3', label: 'Lilac' },
-        { value: 'color4', label: 'Green' },
+        { value: '#e6c2b8', label: 'Pink' },
+        { value: '#88b9cc', label: 'Blue' },
+        { value: '#c4afca', label: 'Lilac' },
+        { value: '#9ed38e', label: 'Green' },
     ]
     const defaultOption = options[0];
 
@@ -41,8 +41,12 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
             "body": text,
             "key": "615410b77517dc2d8b8c8435",
             "style": {
-                "head": "magenta",
-                "body": bcolor
+                "head": {
+                    color: 'pink'
+                },
+                "body":{
+                    color: bcolor
+                } 
             }
         }
 
