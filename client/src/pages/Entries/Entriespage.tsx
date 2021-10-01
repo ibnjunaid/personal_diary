@@ -17,7 +17,7 @@ export interface EntrySchemaResponse extends EntrySchema{
 const Entriespage = () => {
     const [title, setTitle] = useState<string>('')
     const [text, setText] = useState<string>('')
-    const [bcolor, setBColor] = useState<string>('color1')
+    const [bcolor, setBColor] = useState<string>('#88b9cc')
     const [data, setData] = useState<Array<EntrySchemaResponse>>([])
     const [disabled, setDisable] = useState<boolean>(false)
     const [id, setID] = useState<string>('')
@@ -55,6 +55,7 @@ const Entriespage = () => {
         setTitle('')
         setText('')
         setDisable(false)
+        setID('')
     }
 
     return (
@@ -71,10 +72,10 @@ const Entriespage = () => {
                 <button className='search'><SearchOutlined /></button>
                 <div className='entrydiv' >
                     {
-                        data.map((data : any, index) => {
+                        data.map(( data : any ) => {
                             return (
                                 <button className='entrycbtn' key={data._id} onClick={() => { showEntry(data) }} data-item="123" >
-                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry} style={data?.style?.body?.color}/>
+                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry} style={data?.style?.body?.color} />
                                 </button>
                             )
                         })
