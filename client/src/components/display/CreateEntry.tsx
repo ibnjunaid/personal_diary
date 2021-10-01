@@ -1,4 +1,4 @@
-import { SaveOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { SaveOutlined, DeleteOutlined, EditOutlined, ContainerOutlined } from '@ant-design/icons'
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 
@@ -49,7 +49,6 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                 } 
             }
         }
-
         fetch(`/api/entry/create-entry`, {
             method: 'POST',
             body: JSON.stringify(FullEntry),
@@ -60,12 +59,44 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
             response.json()
                 .then(({entry}: any) => {
                     setData([entry, ...data])
-            })
-            
+            })  
         })
     }
 
-    const deleteEntry = (event: any) =>{
+    const updateEntry = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+        const FullEntry = {
+            "id": id,
+            "updatedDoc": {
+                        "head": title,
+                        "body": text,
+                        "key": "615410b77517dc2d8b8c8435",
+                        "style": {
+                            "head": {
+                                color: 'pink'
+                            },
+                            "body":{
+                                color: bcolor
+                            } 
+                        }
+                }
+        }
+        fetch(`/api/entry/update-entry`, {
+            method: 'PATCH',
+            body: JSON.stringify(FullEntry),
+            headers:{
+                'Content-Type':"application/json"
+            }
+        }).then((response : Response) => {
+            response.json()
+                .then(({entry}: any) => {
+                    setData([entry, ...data])
+                    setData(data.filter((data) => data._id !== id ))
+            })      
+        })
+    }
+
+    const deleteEntry = (event: any) =>{ 
         event.preventDefault()
         const ID = {
             "id": id
@@ -92,9 +123,9 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
             <p className='date'> {date}</p>
 
             <Dropdown className='buttonD' options={options} onChange={(e) => { setBColor(e.value)}} value={defaultOption} placeholder="Select an option" />
-            <button onClick={submitToDataBase} type='submit' className='buttonS'><SaveOutlined /></button>
+            <button onClick={ id == '' ? submitToDataBase : updateEntry} type='submit' className='buttonS'><SaveOutlined /></button>
             <button className='buttonS' onClick={deleteEntry}><DeleteOutlined /></button>
-            <button className='buttonS' onClick={()=>setDisable(!disabled)}><EditOutlined /></button>
+            <button className='buttonS' onClick={()=>setDisable(!disabled)}> {disabled ?<EditOutlined />: <ContainerOutlined /> }</button>
             <br />
             <input value={title} className='title' placeholder='Entry Name' onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setTitle(e.target.value) }} disabled ={disabled}/>
             <hr className='hrcss' />
