@@ -17,7 +17,7 @@ export interface EntrySchemaResponse extends EntrySchema{
 const Entriespage = () => {
     const [title, setTitle] = useState<string>('')
     const [text, setText] = useState<string>('')
-    const [bcolor, setBColor] = useState<string>('color1')
+    const [bcolor, setBColor] = useState<string>('#88b9cc')
     const [data, setData] = useState<Array<EntrySchemaResponse>>([])
     const [disabled, setDisable] = useState<boolean>(false)
     const [id, setID] = useState<string>('')
@@ -55,6 +55,7 @@ const Entriespage = () => {
         setTitle('')
         setText('')
         setDisable(false)
+        setID('')
     }
 
     return (

@@ -30,11 +30,14 @@
     height: 2rem;
     width: 2rem;
     margin: 1rem;
-    float:right;
+    margin-left: 1rem;
     border:none;
     font-size: 2rem;
-    margin-bottom: 0rem;
     margin-top: 0rem;
+}
+
+.save{
+    margin-left: 39rem;
 }
 .buttonD {
     background-color: transparent;
@@ -43,7 +46,7 @@
     margin: 1.5rem;
     float:right;
     border:none;
-    font-size: 1rem;
+    font-size: .9rem;
     margin-bottom: 0rem;
     margin-top: 0rem;
 }
