@@ -49,7 +49,8 @@ export const updateEntryController = async ( req: Request, res: Response ) => {
             })
         } else {
             res.json({
-                message: `Entry updated with title : ${updatedEntry.head}`
+                message: `Entry updated with title : ${updatedEntry.head}`,
+                entry: updatedEntry
             })
         }
     } catch (error) {
