@@ -22,10 +22,11 @@ interface CreateEntryProp {
     data: Array<EntrySchemaResponse>,
     id: string,
     setData: (a: Array<EntrySchemaResponse>) => void,
+    setID: (a: string) => void
 }
 
 
-const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData }: CreateEntryProp) => {
+const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData, setID }: CreateEntryProp) => {
 
     const date = new Date().toLocaleString() + ""
 
@@ -64,6 +65,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                     setData([entry, ...data])
                 })
         })
+        setID('0')
     }
 
     const updateEntry = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -97,6 +99,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                     setData(data.filter((data) => data._id !== id))
                 })
         })
+        setID('0')
     }
 
     const deleteEntry = (event: any) => {
@@ -119,6 +122,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                     setText('')
                 })
         })
+        setID('0')
     }
 
     return (

@@ -1,0 +1,17 @@
+.div{
+    /* background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/ab723877268563.5c829061bd6ea.jpg'); */
+    background-color:rgb(255, 254, 251);
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    /* filter:blur(3px); */
+}
+
+.block{
+    color:rgb(141, 135, 135);
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 13rem;
+}

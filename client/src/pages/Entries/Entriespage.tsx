@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import {EntrySchema} from '../../../../commons/interfaces/entrySchema';
 
 import CreateEntry from '../../components/display/CreateEntry';
+import NoEntry from '../../components/display/NoEntry';
 import EntryCard from '../../components/display/EntryCard';
 import UserInfo from '../../components/display/UserInfo';
 import './Entriespage.scss';
@@ -20,7 +21,7 @@ const Entriespage = () => {
     const [bcolor, setBColor] = useState<string>('#88b9cc')
     const [data, setData] = useState<Array<EntrySchemaResponse>>([])
     const [disabled, setDisable] = useState<boolean>(false)
-    const [id, setID] = useState<string>('')
+    const [id, setID] = useState<string>('0')
     
 
     useEffect(() => {
@@ -62,8 +63,11 @@ const Entriespage = () => {
         <div className='container2'>
 
             <div className='leftpanel' style={{background : bcolor}}>
-                <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
-                                setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} setData={setData} />
+                {
+                   id == '0' ? <NoEntry setBColor={setBColor}/> :
+                 <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
+                                setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} setData={setData} setID={setID}/> 
+                }
             </div>
             <div className='rightpanel'>
                 <UserInfo />
