@@ -1,4 +1,4 @@
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined, MoreOutlined  } from '@ant-design/icons'
 import { datacatalog } from 'googleapis/build/src/apis/datacatalog';
 import { useEffect, useState } from 'react';
 //import { Link } from 'react-router-dom';
@@ -70,7 +70,9 @@ const Entriespage = () => {
                 }
             </div>
             <div className='rightpanel'>
-                <UserInfo />
+                <button className='buttonM'> <MoreOutlined /> </button>
+                <div>
+                <UserInfo /> 
                 <hr className='hrcss' />
                 <button className='createbtn' onClick={createNewHandle}> Create New Entry + </button>
                 <button className='search'><SearchOutlined /></button>
@@ -84,6 +86,7 @@ const Entriespage = () => {
                             )
                         })
                     }
+                </div>
                 </div>
             </div>
         </div>

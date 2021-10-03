@@ -1,4 +1,4 @@
-import { SaveOutlined, DeleteOutlined, EditOutlined, ContainerOutlined } from '@ant-design/icons'
+import { SaveOutlined, DeleteOutlined, EditOutlined, ContainerOutlined, BgColorsOutlined  } from '@ant-design/icons'
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { Tooltip } from 'react-tippy';
@@ -10,7 +10,7 @@ import { EntrySchemaResponse } from '../../pages/Entries/Entriespage';
 
 import './UserInfo.scss';
 
-interface CreateEntryProp {
+export interface CreateEntryProp {
     setTitle: (a: string) => void,
     setText: (a: string) => void,
     text: string,
@@ -97,6 +97,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                 .then(({ entry }: any) => {
                     setData([entry, ...data])
                     setData(data.filter((data) => data._id !== id))
+                    setBColor(entry.style.body.color)
                 })
         })
         setID('0')
