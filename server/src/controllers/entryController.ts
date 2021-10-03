@@ -41,6 +41,7 @@ export const getEntryContoller = async ( req:Request, res: Response) => {
 export const updateEntryController = async ( req: Request, res: Response ) => {
     try {
         let updatedEntry = await EntryModel.findByIdAndUpdate(req.body.id, req.body.updatedDoc, { new: true });
+        console.log(updatedEntry)
         if(updatedEntry === null) {
             res.status(404).json({
                 message: 'Entry not found. ' +

@@ -5,11 +5,11 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 2fr 5fr ;
+    grid-template-columns: 1.8fr 5.2fr ;
 }
 
 .leftpanel {
-    height: 90vh;
+    height: 94vh;
     background: #BDF6CC;
     border-radius: 1rem;
     margin: 1.5rem;
@@ -32,7 +32,7 @@
     margin: 1rem;
     margin-left: 1rem;
     border:none;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-top: 0rem;
 }
 
@@ -88,12 +88,12 @@
 }
 
 .hrcss {
-    margin-right: 1rem;
-    margin-left: 1rem;
+    margin-right: .5rem;
+    margin-left: .5rem;
 }
 
 .rightpanel {
-    height: 88vh;
+    height: 90vh;
     background:white;
     border-radius: 1rem;
     margin: 1.5rem;
@@ -101,8 +101,12 @@
     grid-area: 0/ 1 ;
 }
 
+.divs{
+    background: $login-page-card-color;
+}
+
 .createbtn {
-    margin-left: 4rem;
+    margin-left: 2rem;
     margin-right: 1rem;
     margin-bottom: 1rem ;
     font-size: 1.5rem ;
@@ -124,12 +128,12 @@
 }
 .entrydiv {
     overflow-y: scroll ;
-    height: 54vh;
+    height: 52vh;
     background-color: rgb(226, 236, 236);
     border-radius: 1rem;
 }
 .entrycbtn {
-    margin: 1.5rem;
+    margin: .5rem;
     text-align: left;
     margin-bottom: 0rem;
     border:none;

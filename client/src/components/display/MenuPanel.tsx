@@ -3,7 +3,7 @@ import UserInfo from '../../components/display/UserInfo';
 import { SearchOutlined, MoreOutlined  } from '@ant-design/icons';
 import { CreateEntryProp } from './CreateEntry';
 
-const MenuPanel = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData, setID }: CreateEntryProp) => {
+const MenuPanel = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData, setID, setToggle }: CreateEntryProp) => {
 
 const showEntry = (data: any) =>{
     console.log(data);
@@ -23,7 +23,8 @@ const createNewHandle = () => {
 }
 
     return(
-        <div> 
+        <> 
+             <button className='buttonM' onClick={()=> setToggle(false)}> <MoreOutlined /> </button>
              <UserInfo /> 
                 <hr className='hrcss' />
                 <button className='createbtn' onClick={createNewHandle}> Create New Entry + </button>
@@ -39,7 +40,7 @@ const createNewHandle = () => {
                         })
                     }
                 </div>
-        </div>
+        </>
     )
 }
 

@@ -1,5 +1,5 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons'
-import './Noentry.css'
+import './Noentry.scss'
 const NoEntry = (props: any) =>{ 
    
 

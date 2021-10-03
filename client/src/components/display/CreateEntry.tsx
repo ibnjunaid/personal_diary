@@ -22,7 +22,8 @@ export interface CreateEntryProp {
     data: Array<EntrySchemaResponse>,
     id: string,
     setData: (a: Array<EntrySchemaResponse>) => void,
-    setID: (a: string) => void
+    setID: (a: string) => void,
+    setToggle: (a: boolean) => void
 }
 
 
