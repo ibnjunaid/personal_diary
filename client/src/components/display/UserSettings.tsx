@@ -1,11 +1,11 @@
 import { EditOutlined,RollbackOutlined } from "@ant-design/icons"
 import './UserSettings.scss'
 
-interface UserSettings{
+interface UserSettingsI{
     setToggle: (a: boolean) => void
 }
 
-const UserSettings = ({setToggle}: UserSettings ) => {
+const UserSettings = ({setToggle}: UserSettingsI ) => {
 
     return(
         <div className='setDiv'>
