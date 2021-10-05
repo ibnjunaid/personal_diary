@@ -1,13 +1,12 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { datacatalog } from 'googleapis/build/src/apis/datacatalog';
 import { useEffect, useState } from 'react';
-//import { Link } from 'react-router-dom';
+
 import {EntrySchema} from '../../../../commons/interfaces/entrySchema';
 
 import CreateEntry from '../../components/display/CreateEntry';
-import EntryCard from '../../components/display/EntryCard';
-import UserInfo from '../../components/display/UserInfo';
+import NoEntry from '../../components/display/NoEntry';
 import './Entriespage.scss';
+import MenuPanel from '../../components/display/MenuPanel';
+import UserSettings from '../../components/display/UserSettings';
 
 export interface EntrySchemaResponse extends EntrySchema{
     _id : string,
@@ -20,7 +19,8 @@ const Entriespage = () => {
     const [bcolor, setBColor] = useState<string>('#88b9cc')
     const [data, setData] = useState<Array<EntrySchemaResponse>>([])
     const [disabled, setDisable] = useState<boolean>(false)
-    const [id, setID] = useState<string>('')
+    const [id, setID] = useState<string>('0')
+    const [toggle, setToggle] = useState<boolean>(true)
     
 
     useEffect(() => {
@@ -41,46 +41,24 @@ const Entriespage = () => {
         })()
     }, [])
 
-    const showEntry = (data: any) =>{
-        console.log(data);
-        setTitle(data.head)
-        setText(data.body)
-        setID(data._id)
-        setDisable(true)
-        console.log(text,title)
-        setBColor(data?.style?.body?.color)
-    }
-
-    const createNewHandle = () => {
-        setTitle('')
-        setText('')
-        setDisable(false)
-        setID('')
-    }
-
     return (
         <div className='container2'>
 
             <div className='leftpanel' style={{background : bcolor}}>
-                <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
-                                setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} setData={setData} />
+                {
+                   id == '0' ? <NoEntry setBColor={setBColor}/> :
+                 <CreateEntry setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
+                        setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} setData={setData} setID={setID}setToggle={setToggle}/> 
+                }
             </div>
-            <div className='rightpanel'>
-                <UserInfo />
-                <hr className='hrcss' />
-                <button className='createbtn' onClick={createNewHandle}> Create New Entry + </button>
-                <button className='search'><SearchOutlined /></button>
-                <div className='entrydiv' >
-                    {
-                        data.map(( data : any ) => {
-                            return (
-                                <button className='entrycbtn' key={data._id} onClick={() => { showEntry(data) }} data-item="123" >
-                                    <EntryCard title={data.head} text={data.body} key={data._id} onClick = {showEntry} style={data?.style?.body?.color} />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+            <div className={ toggle? `rightpanel` : `rightpanel divs`}>
+               {
+               toggle ? 
+                    <MenuPanel setTitle={setTitle} setText={setText} title={title} text={text} bcolor={bcolor}
+                                setBColor={setBColor} disabled={disabled} setDisable={setDisable} data={data} id={id} 
+                                setData={setData} setID={setID} setToggle={setToggle}/>
+                :   <UserSettings setToggle={setToggle}/> 
+                }
             </div>
         </div>
     )

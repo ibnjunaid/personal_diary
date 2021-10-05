@@ -1,4 +1,4 @@
-import { SaveOutlined, DeleteOutlined, EditOutlined, ContainerOutlined } from '@ant-design/icons'
+import { SaveOutlined, DeleteOutlined, EditOutlined, ContainerOutlined, BgColorsOutlined  } from '@ant-design/icons'
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import { Tooltip } from 'react-tippy';
@@ -10,7 +10,7 @@ import { EntrySchemaResponse } from '../../pages/Entries/Entriespage';
 
 import './UserInfo.scss';
 
-interface CreateEntryProp {
+export interface CreateEntryProp {
     setTitle: (a: string) => void,
     setText: (a: string) => void,
     text: string,
@@ -22,10 +22,12 @@ interface CreateEntryProp {
     data: Array<EntrySchemaResponse>,
     id: string,
     setData: (a: Array<EntrySchemaResponse>) => void,
+    setID: (a: string) => void,
+    setToggle: (a: boolean) => void
 }
 
 
-const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData }: CreateEntryProp) => {
+const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabled, setDisable, data, id, setData, setID }: CreateEntryProp) => {
 
     const date = new Date().toLocaleString() + ""
 
@@ -64,6 +66,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                     setData([entry, ...data])
                 })
         })
+        setID('0')
     }
 
     const updateEntry = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -95,8 +98,10 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                 .then(({ entry }: any) => {
                     setData([entry, ...data])
                     setData(data.filter((data) => data._id !== id))
+                    setBColor(entry.style.body.color)
                 })
         })
+        setID('0')
     }
 
     const deleteEntry = (event: any) => {
@@ -119,6 +124,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
                     setText('')
                 })
         })
+        setID('0')
     }
 
     return (
