@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -5,17 +6,19 @@ import {
 } from 'react-router-dom';
 
 import './App.scss';
-import CreateKeys from './pages/Create_Key/CreateKeys';
 import Entriespage from './pages/Entries/Entriespage';
 import { Home } from './pages/Home/Home';
 
 function App() {
+
+  const [hasKey, setHasKey] = useState<boolean>(false)
+  const [displayPic, setDisplayPic] = useState<string>('')
+
   return (
-    //<Home/>
+    <Home/>
     // <Router>
     //     <Route path='/entry'>
-            //<Entriespage />
-            <CreateKeys/>
+            // <Entriespage />
     //     </Route>
     //     <Route path='/home'>
     //         <Home />
