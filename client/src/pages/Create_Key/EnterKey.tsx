@@ -1,6 +1,6 @@
 import { LockOutlined } from "@ant-design/icons"
 import './CreateKey.scss'
-const CreateKey = () => {
+const EnterKey = () => {
     return(
         <div className='keydiv'>
              Please enter your key <br/>
@@ -12,4 +12,4 @@ const CreateKey = () => {
     )
 }
 
-export default CreateKey
+export default EnterKey

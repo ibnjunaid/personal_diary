@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import './App.scss';
-import CreateKey from './pages/Create_Key/CreateKey';
+import CreateKeys from './pages/Create_Key/CreateKeys';
 import Entriespage from './pages/Entries/Entriespage';
 import { Home } from './pages/Home/Home';
 
@@ -14,8 +14,8 @@ function App() {
     //<Home/>
     // <Router>
     //     <Route path='/entry'>
-            <Entriespage />
-            //<CreateKey/>
+            //<Entriespage />
+            <CreateKeys/>
     //     </Route>
     //     <Route path='/home'>
     //         <Home />

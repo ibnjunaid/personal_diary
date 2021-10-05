@@ -21,6 +21,7 @@
     text-align: center;
     color: $login-page-card-color;
     padding: .2rem;
+    margin-bottom: 1rem;
 }
 
 .keydiv2{
@@ -28,3 +29,45 @@
     margin: 2rem;
 }
 
+.ekeydiv{
+    background-color: rgb(212, 231, 231);
+    width :100vw;
+    height:100vh;
+    text-align: center;
+    color: $login-page-card-color;
+    font-size: 1rem;
+    //border: 2px dashed #486989;
+}
+
+.keyin{
+    width: 20rem;
+    height: 2rem;
+    border-radius: .5rem;
+    border-style:none;
+    font-size: 1.3rem;
+    color: $login-page-card-color;
+    padding: .5rem;
+    margin-bottom: 1rem;
+}
+
+.ekeyi{
+    border-radius: 50%;
+    width: 8rem;
+    margin: 2rem;
+}
+
+.ekeydiv2{
+    font-family: Lato;
+    padding-top: 4rem;
+    font-size: 3rem
+}
+
+.butk{
+    background: $login-page-card-color;
+    width: 14rem;
+    margin: 2rem;
+    border-radius:.5rem;
+    height: 2.5rem;
+    color:whitesmoke;
+    font-size: 1.5rem;
+}
