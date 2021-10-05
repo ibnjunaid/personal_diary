@@ -14,12 +14,7 @@ export const signinController = async (req: Request, res: Response) => {
         const userInfo = await validateUserInfo(token);
 
         //Check if any user exist with this googleId
-        const user = await UserModel.findOne({ googleId: userInfo.id }, {
-            _id:0,
-            displayPicture: 1,
-            userName: 1,
-            email: 1
-        });
+        const user = await UserModel.findOne({ googleId: userInfo.id });
 
         if (user == null) {
             //If the user  doesn't exist create a new One
@@ -41,7 +36,7 @@ export const signinController = async (req: Request, res: Response) => {
             const token = jsonwebtoken.sign(JSON.stringify( { displayPicture, userName, email } ), Secret);
 
             // Check whether secrets is configured
-            const isSecretsConfigured = savedUser.keys === undefined ? false : true;
+            const isSecretsConfigured = savedUser.keys.length > 0;
 
             // Send details to the caller
             res.json({
@@ -54,18 +49,22 @@ export const signinController = async (req: Request, res: Response) => {
             })
         }
         else {
+
+            const { displayPicture, userName, email } = user;
+
             // Check whether secrets is configured
-            const isSecretsConfigured = user.keys === undefined ? false : true;
+
+            const isSecretsConfigured = user.keys.length > 0;
 
             //generate a jsonwebtoken
-            const token = jsonwebtoken.sign(JSON.stringify(user), Secret);
+            const token = jsonwebtoken.sign(JSON.stringify({ displayPicture, userName, email }), Secret);
 
             // Send details to the caller
             res.json({
                 status: true,
                 isNew: false,
                 token: token,
-                user: user,
+                user: { displayPicture, userName, email },
                 isSecretsConfigured: isSecretsConfigured, //DONE: Check if secrets is configured
                 message: "User already exist", //DONE: Generate a token for the user, and send it to the frontend
             })
