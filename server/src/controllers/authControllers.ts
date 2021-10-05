@@ -1,34 +1,73 @@
 import axios from 'axios';
 import { Request, Response, Router } from 'express';
-const jwt = require('node-jsonwebtoken');
+import jsonwebtoken from 'jsonwebtoken';
 
 import UserModel from '../models/Users';
+
+const Secret = 'mysupersecret-key';
 
 export const signinController = async (req: Request, res: Response) => {
     try {
         const { token } = req.body;
-        const userInfo = await getUserInfo(token);
-        const googleId = userInfo.id;
-        const user = await UserModel.findOne({ googleId });
+
+        //Validate if the token by calling the google Oauth Api
+        const userInfo = await validateUserInfo(token);
+
+        //Check if any user exist with this googleId
+        const user = await UserModel.findOne({ googleId: userInfo.id }, {
+            _id:0,
+            displayPicture: 1,
+            userName: 1,
+            email: 1
+        });
+
         if (user == null) {
+            //If the user  doesn't exist create a new One
             const newUser = new UserModel({
-                googleId,
-                userName: userInfo.givenName,
+                googleId: userInfo.id,
+                userName: userInfo.given_name,
                 email: userInfo.email,
-                displayPicture: userInfo.givenName
+                displayPicture: userInfo.picture
             })
 
+            //Save the user to database
             const savedUser = await newUser.save();
+
             console.info(`New user ${savedUser.userName} created.`);
 
+            //extract details
+            const { displayPicture, userName, email} = savedUser;
+            // generate a jsonwebtoken
+            const token = jsonwebtoken.sign(JSON.stringify( { displayPicture, userName, email } ), Secret);
+
+            // Check whether secrets is configured
+            const isSecretsConfigured = savedUser.keys === undefined ? false : true;
+
+            // Send details to the caller
             res.json({
                 status: true,
-                message: "New User created sucessfully", //TODO: Generate a token for the user
+                isNew: true,
+                token: token,
+                user: { displayPicture, userName, email },
+                isSecretsConfigured: isSecretsConfigured, //DONE: Check if secrets is configured
+                message: "New User created sucessfully", //DONE: Generate a token for the user
             })
-        } else {
+        }
+        else {
+            // Check whether secrets is configured
+            const isSecretsConfigured = user.keys === undefined ? false : true;
+
+            //generate a jsonwebtoken
+            const token = jsonwebtoken.sign(JSON.stringify(user), Secret);
+
+            // Send details to the caller
             res.json({
                 status: true,
-                message: "User already exist", //TODO: Generate a token for the user, and send it to the frontend
+                isNew: false,
+                token: token,
+                user: user,
+                isSecretsConfigured: isSecretsConfigured, //DONE: Check if secrets is configured
+                message: "User already exist", //DONE: Generate a token for the user, and send it to the frontend
             })
         }
     } catch (error: any) {
@@ -36,7 +75,7 @@ export const signinController = async (req: Request, res: Response) => {
     }
 }
 
-async function getUserInfo(token: any) {
+async function validateUserInfo(token: any) {
     try {
         const response = await axios
             .get(
@@ -48,7 +87,7 @@ async function getUserInfo(token: any) {
                 },
             );
         const googleUser = await response.data;
-        console.log(googleUser);
+        // console.log(googleUser);
         return googleUser;
     } catch (error) {
         // console.error(error)
