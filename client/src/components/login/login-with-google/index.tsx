@@ -25,5 +25,6 @@ const handleLogin = async (googleData : any) => {
     });
     const data = await res.json();
     console.log(data)
+    
     // store returned user somehow
 };
