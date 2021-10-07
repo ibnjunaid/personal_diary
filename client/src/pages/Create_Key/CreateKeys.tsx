@@ -1,4 +1,5 @@
 import { LockOutlined } from "@ant-design/icons"
+import { Link } from 'react-router-dom';
 import './CreateKey.scss'
 
 const CreateKeys = () => {
@@ -18,6 +19,9 @@ const CreateKeys = () => {
             <input placeholder='xxx-xxx-xxx' className='keyin'/><br/>
             
             <button className='butk'>Create Account</button>
+            {
+                <Link to='/entry' style={{color:'black'}}> entry page</Link>
+            }
         </div>
     )
 }

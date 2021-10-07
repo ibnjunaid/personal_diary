@@ -12,7 +12,7 @@ const EntryCard = (prop: EntryCardProp) => {
     return (
         <div className= 'card' style={{background : prop.style }}>
             <h2 style={{color:'black', textAlign:'left'}}>{prop.title} </h2>
-            <p>{prop.text.substring(0, 25)} ...</p>
+            <p>{prop.text.substring(0, 30)} ...</p>
         </div>
     )
 }

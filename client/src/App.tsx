@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 
 import './App.scss';
+import CreateKeys from './pages/Create_Key/CreateKeys';
+import EnterKey from './pages/Create_Key/EnterKey';
 import Entriespage from './pages/Entries/Entriespage';
 import { Home } from './pages/Home/Home';
 
@@ -64,6 +66,12 @@ function App() {
         </Route>
         <Route path='/home'>
           <Home />
+        </Route>
+        <Route path='/newUser'>
+          <CreateKeys/>
+        </Route>
+        <Route path='/User'>
+          <EnterKey/>
         </Route>
       </Router>
       
