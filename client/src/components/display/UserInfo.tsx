@@ -1,11 +1,15 @@
 import './UserInfo.scss';
+import { StateContext } from '../../App';
+import { useContext } from 'react';
 
 const UserInfo = () => {
 
+    const StateContextN = useContext(StateContext)
+    console.log(StateContextN.state.userName)
     return (
         <>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1_0exkA6Rq8-cVs9yK-IOErE-MulGdqx7nP3uyk9hWq27iv5xfHp4j0KP_YgFumn242c&usqp=CAU' className='image' alt='work desk'></img>
-            <p className='input'> Username</p>
+            <img src={ StateContextN.state.displayPicture} className='image' alt='display picture alt'></img>
+            <p className='input'> { StateContextN.state.userName }</p>
         </>
     )
 }
