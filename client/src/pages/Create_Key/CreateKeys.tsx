@@ -1,4 +1,3 @@
-import { LockOutlined } from "@ant-design/icons"
 import { Link } from 'react-router-dom';
 import './CreateKey.scss'
 
@@ -13,15 +12,14 @@ const CreateKeys = () => {
             <input placeholder='Username' className='keyin'/> <br/>
             
             Enter Secret Key <br/>
-            <input placeholder='xxx-xxxx-xxx' className='keyin'/><br/>
+            <input placeholder='xxx-xxxx-xxx' className='keyin' 
+                    onChange={(e) =>{ localStorage.setItem('Secret Key', e.target.value)}}/><br/>
             
             Enter Public Key <br/>
-            <input placeholder='xxx-xxx-xxx' className='keyin'/><br/>
+            <input placeholder='xxx-xxx-xxx' className='keyin'
+                     onChange={(e) =>{ localStorage.setItem('Public Key', e.target.value)}}/><br/>
             
-            <button className='butk'>Create Account</button>
-            {
-                <Link to='/entry' style={{color:'black'}}> entry page</Link>
-            }
+            <button className='butk'><Link to='/user' style={{color:'white', textDecoration:'none'}}> Create Account </Link></button>
         </div>
     )
 }

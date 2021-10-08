@@ -1,7 +1,6 @@
-import { useReducer, useState, createContext } from 'react';
+import { useReducer, createContext } from 'react';
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
 } from 'react-router-dom';
 
@@ -45,7 +44,6 @@ const reducer = (state: UserInterface, action: any) => {
     case 'userName':
       return { ...state, userName: action.value }
     case 'setUser':
-      console.log(action.value)
       return { ...action.value }
     default:
       return state
@@ -70,8 +68,11 @@ function App() {
         <Route path='/newUser'>
           <CreateKeys/>
         </Route>
-        <Route path='/User'>
+        <Route path='/user'>
           <EnterKey/>
+        </Route>
+        <Route exact path='/'>
+          <Home/>
         </Route>
       </Router>
       
