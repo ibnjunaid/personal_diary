@@ -9,7 +9,7 @@ const UserInfo = () => {
     return (
         <>
             <img src={ StateContextN.state.displayPicture} className='image' alt='display picture alt'></img>
-            <p className='input'> { localStorage.getItem('userName') }</p>
+            <p className='input'> { StateContextN.state.userName }</p>
         </>
     )
 }

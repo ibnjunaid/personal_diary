@@ -1,10 +1,30 @@
 import { LockOutlined } from "@ant-design/icons"
+import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 import './CreateKey.scss'
 const EnterKey = () => {
 
-    const SecretKey = localStorage.getItem('Secret Key')
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             const response = await fetch(`http://localhost:5000/api/`, {
+    //                 method: 'GET',
+    //                 mode: 'cors',
+    //                 headers:{
+    //                     'Content-Type':"application/json"
+    //                 }
+    //             })
+    //             let {data} = await response.json()
+    //             //setData(data)
+    //         } catch (error) {
+    //             throw error;
+    //         }
+    //     })()
+    // }, [])
+
+
+    const SecretKey = `${localStorage.getItem('Secret Key')}`
     let SecretEntered
     return(
         <div className='keydiv'>
