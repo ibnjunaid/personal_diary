@@ -12,9 +12,6 @@ export function Home(){
                 <MyDiaryCard/>
                 <LoginWithGoogle/>
             </div>
-            {
-                <Link to='/newUser' style={{color:'black'}}> create key page</Link>
-            }
         </div>
     )
 }

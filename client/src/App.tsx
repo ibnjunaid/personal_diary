@@ -1,6 +1,7 @@
 import { useReducer, createContext } from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
 } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import Entriespage from './pages/Entries/Entriespage';
 import { Home } from './pages/Home/Home';
 
 export interface UserInterface {
+  isLoggedIn: boolean,
   isSecretsConfigured: boolean,
   email: string,
   displayPicture: string,
@@ -18,6 +20,7 @@ export interface UserInterface {
 }
 
 const initialState: UserInterface = {
+  isLoggedIn: false,
   isSecretsConfigured: false,
   email: '',
   displayPicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1_0exkA6Rq8-cVs9yK-IOErE-MulGdqx7nP3uyk9hWq27iv5xfHp4j0KP_YgFumn242c&usqp=CAU',
@@ -44,7 +47,7 @@ const reducer = (state: UserInterface, action: any) => {
     case 'userName':
       return { ...state, userName: action.value }
     case 'setUser':
-      return { ...action.value }
+      return { ...action.value , isLoggedIn: true }
     default:
       return state
   }
@@ -54,17 +57,22 @@ function App() {
 
   const [newState, dispatch] = useReducer(reducer, initialState)
 
+  let f : any = window;
+  f.d = newState;
+
   return (
 
     <StateContext.Provider value={{ state: newState, dispatch: dispatch }}>
-
       <Router>
-        <Route path='/entry'>
-          <Entriespage />
-        </Route>
+        <ConditionalRoute Condition={ newState.isLoggedIn } path='/entry'>
+          <Entriespage/>
+        </ConditionalRoute>
         <Route path='/home'>
           <Home />
         </Route>
+        {/* <ConditionalRoute Condition={ newState.isLoggedIn && !newState.isSecretsConfigured } path='/entry'>
+          <CreateKeys/>
+        </ConditionalRoute> */}
         <Route path='/newUser'>
           <CreateKeys/>
         </Route>
@@ -75,9 +83,20 @@ function App() {
           <Home/>
         </Route>
       </Router>
-      
     </StateContext.Provider>
   );
+}
+
+function ConditionalRoute({children, Condition, path}: any){
+  return (
+    <Route path = {path} render = {() => {
+      if(Condition){
+        return children
+      } else {
+        return <Redirect to='/'/>
+      }
+    }}/>
+  )
 }
 
 export default App;
