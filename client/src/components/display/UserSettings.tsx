@@ -17,14 +17,17 @@ const UserSettings = ({setToggle}: UserSettingsI ) => {
             <img src={StateContextN.state.displayPicture} className='imageset' alt='work desk'/>
             Username <br/>
             <input  placeholder='Your name' className='seti' 
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({type: 'userName', value: e.target.value}) }}/>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({type: 'userName', value: e.target.value}); 
+                                                                            localStorage.setItem('userName', e.target.value) }}/>
             <EditOutlined /> <br/>
             
             Secret Key <br/>
-            <input placeholder='xxx-xxxx-xxx' className='seti'/><EditOutlined /><br/>
+            <input placeholder='xxx-xxxx-xxx' className='seti'
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{localStorage.setItem('Secret Key', e.target.value) }}/><EditOutlined /><br/>
             
             Public Key <br/>
-            <input placeholder='xxx-xxx-xxx' className='seti'/><EditOutlined /><br/>
+            <input placeholder='xxx-xxx-xxx' className='seti'
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{localStorage.setItem('Public Key', e.target.value) }}/><EditOutlined /><br/>
             
             Google Account <br/>
             <input  placeholder='xyx123@gmail.com' className='seti' 
