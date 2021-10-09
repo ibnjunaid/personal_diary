@@ -44,8 +44,8 @@ export const signinController = async (req: Request, res: Response) => {
                 isNew: true,
                 token: token,
                 user: { displayPicture, userName, email },
-                isSecretsConfigured: isSecretsConfigured, //DONE: Check if secrets is configured
-                message: "New User created sucessfully", //DONE: Generate a token for the user
+                isSecretsConfigured: isSecretsConfigured,
+                message: "New User created sucessfully",
             })
         }
         else {
