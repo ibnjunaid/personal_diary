@@ -9,18 +9,24 @@ const EnterKey = () => {
 
     const StateContextN = useContext (StateContext)
     const [enteredKey, setEnteredKey] = useState<string>('')
+    const [keyVerified, setKeyVerified] = useState<boolean>(false)
 
     const VerifyKey = () => {
             fetch(`http://localhost:5000/api/keys/check-keys`,{
-                method: 'GET',
+                method: 'POST',
                 body: JSON.stringify({ key: enteredKey, userId: StateContextN.state.userId}),
                 headers: {
                     'Content-Type': "application/json"
                 }
-            }).then((data) =>{
-                console.log('success')
+            }).then((response) =>{
+                if( response.ok){
+                    setKeyVerified(true)
+                }
+                else{
+                    setKeyVerified(false)
+                }
             }).catch((error) => {
-                console.error('failed')
+                console.error(error)
             })
     }
 
@@ -33,7 +39,7 @@ const EnterKey = () => {
              </div>
             <input className='keyi' placeholder='diary-key' onChange={(e) => { setEnteredKey(e.target.value)} }/> 
             <button className='butk' onClick= {VerifyKey}>
-                <Link to='/entry' style={{color:'white', textDecoration:'none'}}> OK </Link>
+               <Link to={ keyVerified ? '/entry' : '/home'} style={{color:'white', textDecoration:'none'}}> OK </Link> 
             </button>
         </div>
     )
