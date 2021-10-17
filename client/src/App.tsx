@@ -17,8 +17,7 @@ export interface UserInterface {
   email: string,
   displayPicture: string,
   userName: string,
-  Sectet: string,
-  Private: string
+  userId: string
 }
 
 const initialState: UserInterface = {
@@ -27,8 +26,7 @@ const initialState: UserInterface = {
   email: '',
   displayPicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1_0exkA6Rq8-cVs9yK-IOErE-MulGdqx7nP3uyk9hWq27iv5xfHp4j0KP_YgFumn242c&usqp=CAU',
   userName: 'Username',
-  Sectet: '',
-  Private: ''
+  userId: ''
 }
 
 export const StateContext = createContext<{
@@ -52,10 +50,6 @@ const reducer = (state: UserInterface, action: any) => {
       return { ...state, userName: action.value }
     case 'setUser':
       return { ...action.value , isLoggedIn: true }
-    case 'SecretKey':
-      return { ...state, Secret: action.value}
-    case 'PrivateKey':
-        return { ...state, Private: action.value}
     default:
       return state
   }

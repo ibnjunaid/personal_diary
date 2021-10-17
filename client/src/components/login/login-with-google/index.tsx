@@ -36,12 +36,11 @@ const handleLogin = async (googleData: any , StateContextN: any, history: any) =
     const data = await res.json();
     // console.log(data);
 
-    StateContextN.dispatch({type:'setUser', value:{ ...data.user, isSecretsConfigured : data.isSecretsConfigured}})
-
+    StateContextN.dispatch({type:'setUser', value:{ ...data.user, isSecretsConfigured : data.isSecretsConfigured, userId: data.userId}})
     localStorage.setItem('token',data.token)
 
     if( data.isSecretsConfigured ){
-        history.push('/entry');
+        history.push('/User');
     } else {
         history.push('/newUser');
     }
