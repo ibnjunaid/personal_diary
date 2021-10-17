@@ -44,6 +44,7 @@ export const signinController = async (req: Request, res: Response) => {
                 isNew: true,
                 token: token,
                 user: { displayPicture, userName, email },
+                userId: savedUser._id,
                 isSecretsConfigured: isSecretsConfigured,
                 message: "New User created sucessfully",
             })
@@ -65,6 +66,7 @@ export const signinController = async (req: Request, res: Response) => {
                 isNew: false,
                 token: token,
                 user: { displayPicture, userName, email },
+                userId: user._id,
                 isSecretsConfigured: isSecretsConfigured, //DONE: Check if secrets is configured
                 message: "User already exist", //DONE: Generate a token for the user, and send it to the frontend
             })
