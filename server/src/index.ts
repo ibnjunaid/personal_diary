@@ -4,6 +4,8 @@ import cors from 'cors'
 
 import authRoutes from './routes/authRoutes';
 import entryRoutes from './routes/entryRoutes';
+import keyRoutes from './routes/keyRoutes';
+
 
 import { connect } from 'mongoose';
 
@@ -18,6 +20,8 @@ App.use(express.json())
 App.use('/api/auth', authRoutes);
 
 App.use('/api/entry', entryRoutes);
+
+App.use('/api/keys' , keyRoutes)
 
 connect('mongodb://localhost:27017/diary',(err) => {
     if(err){
