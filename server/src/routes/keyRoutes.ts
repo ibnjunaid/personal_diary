@@ -5,7 +5,7 @@ const router = Router();
 
 router.patch('/update-keys', addKeysController)
 
-router.get('/check-keys', checkKeysController)
+router.post('/check-keys', checkKeysController)
 
 
 export default router;
