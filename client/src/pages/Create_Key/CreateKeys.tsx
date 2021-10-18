@@ -14,16 +14,15 @@ const CreateKeys = () => {
     const [keys, setKeys] = useState<keys>( {publicKey:'', secretKey: ''} )
 
     const KeysSubmit = () => {
-
         const UserKeys = {
-            Keys: [
+            keys: [
                 {
                     value: keys.publicKey,
-                    type: 'DUMMY'
+                    keyType: 'DUMMY'
                 },
                 {
                     value: keys.secretKey,
-                    type: 'REAL'
+                    keyType: 'REAL'
                 },
             ],
             userId: StateContextN.state.userId
