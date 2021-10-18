@@ -21,6 +21,7 @@ export const addKeysController = async (req: Request, res: Response) => {
 
 export const checkKeysController = async (req: Request, res: Response) => {
     try {
+        console.log(req.body)
         const Key = req.body.key;
         const userId = req.body.userId;
         const User = await UserModel.findOne({ "keys.value": {$in : [ Key ]} , _id: userId });
