@@ -4,24 +4,19 @@ import './CreateKey.scss'
 
 import { StateContext } from '../../App';
 
-interface keys{
-    publicKey: string,
-    secretKey: string
-}
 const CreateKeys = () => {
 
     const StateContextN = useContext(StateContext)
-    const [keys, setKeys] = useState<keys>( {publicKey:'', secretKey: ''} )
 
     const KeysSubmit = () => {
         const UserKeys = {
             keys: [
                 {
-                    value: keys.publicKey,
+                    value: StateContextN.state.publicKey,
                     keyType: 'DUMMY'
                 },
                 {
-                    value: keys.secretKey,
+                    value: StateContextN.state.secretKey,
                     keyType: 'REAL'
                 },
             ],
@@ -47,10 +42,10 @@ const CreateKeys = () => {
             <input placeholder={StateContextN.state.userName} className='keyin' /> <br />
 
             Enter Secret Key <br />
-            <input placeholder='xxx-xxxx-xxx' className='keyin' onChange={(e) => {setKeys({ ...keys, secretKey: e.target.value })}}/><br />
+            <input placeholder='xxx-xxxx-xxx' className='keyin' onChange={(e) => { StateContextN.dispatch({ type:'secretKey', value: e.target.value })} }/><br />
 
             Enter Public Key <br />
-            <input placeholder='xxx-xxx-xxx' className='keyin'  onChange={(e) => {setKeys({ ...keys, publicKey: e.target.value })}} /><br />
+            <input placeholder='xxx-xxx-xxx' className='keyin'  onChange={(e) => { StateContextN.dispatch({ type:'publicKey', value: e.target.value })} } /><br />
 
             <button className='butk' onClick={KeysSubmit}><Link to='/entry' style={{ color: 'white', textDecoration: 'none' }}> Create Account </Link></button>
         </div>

@@ -9,6 +9,30 @@ interface UserSettingsI{
 
 const UserSettings = ({setToggle}: UserSettingsI ) => {
 
+    const KeysSubmit = () => {
+        const UserKeys = {
+            keys: [
+                {
+                    value: StateContextN.state.publicKey,
+                    keyType: 'DUMMY'
+                },
+                {
+                    value: StateContextN.state.secretKey,
+                    keyType: 'REAL'
+                },
+            ],
+            userId: StateContextN.state.userId
+        }
+        fetch(`http://localhost:5000/api/keys/update-keys`, {
+            method: 'PATCH',
+            body: JSON.stringify(UserKeys),
+            headers: {
+                'Content-Type': "application/json"
+            }
+        })
+        setToggle(true)
+    }
+
     const StateContextN = useContext(StateContext)
 
     return(
@@ -20,20 +44,18 @@ const UserSettings = ({setToggle}: UserSettingsI ) => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({type: 'userName', value: e.target.value})} }/>
             <EditOutlined /> <br/>
             
-            Secret Key <br/>
-            <input placeholder='xxx-xxxx-xxx' className='seti'
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({type:'SecretKey', value:e.target.value})} }/><EditOutlined /><br/>
-            
-            Public Key <br/>
-            <input placeholder='xxx-xxx-xxx' className='seti'
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({type:'PrivateKey', value:e.target.value})}}/><EditOutlined /><br/>
-            
-            Google Account <br/>
+            Enter Secret Key <br />
+            <input placeholder='xxx-xxxx-xxx' className='seti' onChange={(e) => { StateContextN.dispatch({ type:'secretKey', value: e.target.value })} }/>  <EditOutlined /> <br />
+
+            Enter Public Key <br />
+            <input placeholder='xxx-xxx-xxx' className='seti'  onChange={(e) => { StateContextN.dispatch({ type:'publicKey', value: e.target.value })} } />  <EditOutlined /><br />
+
+            {/* Google Account <br/>
             <input  placeholder='xyx123@gmail.com' className='seti' 
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({ type: 'email', value: e.target.value}) }}/>
-            <EditOutlined /><br/>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>{ StateContextN.dispatch({ type: 'email', value: e.target.value}) }}/> */}
+           <br/>
             
-            <button className='buts' onClick={()=> setToggle(true)}>Save Changes</button>
+            <button className='buts' onClick={KeysSubmit}>Save Changes</button>
         </div>
     )
 }
