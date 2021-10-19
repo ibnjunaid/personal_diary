@@ -1,7 +1,7 @@
 <h1 align="center">Personal Diary </h1>
 
 This is an Open-Source personal diary webapp with double check security system in which you can write all your
-secret diary entries without worrying it getting revealed. :spraking:
+secret diary entries without worrying it getting revealed. ✨✨✨
 
 This personal diary will have two diary :
 
