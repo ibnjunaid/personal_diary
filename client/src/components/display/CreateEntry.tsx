@@ -38,7 +38,7 @@ const CreateEntry = ({ setTitle, setText, text, title, bcolor, setBColor, disabl
         { value: '#9ed38e', label: 'Green' },
         { value: 'rgb(240, 253, 166)', label: 'Yellow' },
         { value: 'rgb(248, 148, 131)', label: 'Red' },
-        { value: 'rgb(139, 138, 180)', label: 'Blue' },
+        { value: 'rgb(177, 120, 87)', label: 'Brown' },
 
     ]
     const defaultOption = bcolor;

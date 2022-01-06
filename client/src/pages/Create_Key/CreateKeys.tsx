@@ -22,7 +22,7 @@ const CreateKeys = () => {
             ],
             userId: StateContextN.state.userId
         }
-        fetch(`http://localhost:5000/api/keys/update-keys`, {
+        fetch(`/api/keys/update-keys`, {
             method: 'PATCH',
             body: JSON.stringify(UserKeys),
             headers: {
